@@ -6,7 +6,7 @@ import axiosClient from "../axios-client.js";
 export default function DefaultLayout() {
 
   // Utilisation de notre StateContext
-  const {user, token, setUser, setToken} = useStateContext()
+  const {user, token, notification, setUser, setToken} = useStateContext()
 
   // Si pas authentifié, user redirigé vers page de Login
   if (!token) {
@@ -34,11 +34,13 @@ export default function DefaultLayout() {
 
   return (
     <div id="defaultLayout">
+      {/* Sidebar */}
       <aside>
         <Link to={"/dashboard"}>Dashboard</Link>
         <Link to={"/users"}>Users</Link>
       </aside>
 
+      {/* Contenu de la page */}
       <div className="content">
         <header>
           <div>
@@ -50,10 +52,18 @@ export default function DefaultLayout() {
           </div>
         </header>
 
+        {/* Composants enfants */}
         <main>
           <Outlet/>
         </main>
       </div>
+
+      {/* Notifications */}
+      {notification &&
+        <div className="notification">
+        {notification}
+        </div>
+      }
 
     </div>
   )
