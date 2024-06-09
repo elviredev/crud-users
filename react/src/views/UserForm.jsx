@@ -4,11 +4,8 @@ import axiosClient from "../axios-client.js";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function UserForm() {
-  const {id} = useParams()
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
-  const [errors, setErrors] = useState(null);
-  const {setNotification} = useStateContext()
+  let {id} = useParams()
   const [user, setUser] = useState({
     id: null,
     name: '',
@@ -16,6 +13,9 @@ export default function UserForm() {
     password: '',
     password_confirmation: ''
   });
+  const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState(null);
+  const {setNotification} = useStateContext()
 
   if (id) {
     useEffect(() => {
