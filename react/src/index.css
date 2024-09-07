@@ -197,7 +197,8 @@ table > tbody > tr > td {
 
 #defaultLayout aside {
   width: 240px;
-  background-color: #27a8e0;
+  /*background-color: #27a8e0;*/
+  background-color: deeppink;
   padding: 1rem
 }
 
